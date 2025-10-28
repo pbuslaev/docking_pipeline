@@ -2,6 +2,8 @@
 
 This is the overview of steps taken to run a simple docking task with `AutoDock Vina` and `DiffDock` on *CDK2*.
 
+Summary slide is available here. The same summary is at the [end](#summary) of readme.
+
 ## 1. Complex downloading.
 
 For this part we use environment `venvs/strucutre_loading/venv`. It can be created with
@@ -294,3 +296,5 @@ In case, the subset of selected molecules is to big (thousands), some intermedia
 Best molecules, as defined by FEP, can then be tested in experiment. Ideally, it would be great to get some direct binding affinity measurement with IPC or SPR (NMR and other techniques can also be used). With such assays you measure the binding affinity directly and this can be the most direct way to validate your pipeline. When pipeline is validated, more complicated and costly measurements can be done. This include some biological assyas, like enzyme activity assay or ELISA. Those assay, measure the indirect affects of binding, but often are correlated with binding affinity. At later stages we might be interested in expesive *in vivo* assays to measure dose-response effects of drugs on animals. However, when we start from a library like this, I would assume the project team to be on the early stages of the project, thus direct binding measurements are in priority. Ideally, I would like to get the exact IC50 value, but in some cases, when you are too close to assay boundary, you might only measure percentage of inhibition at a particular concentration, which is harder to translate to IC50.
 
 To sum up this section, do decide if you want to follow up on the compound you might want to use physics-based methods like MD and FEP to select best compounds. And then, for the best compounds, you might want to measure binding affinity at earlier stages, and accompany those with bioassays and tox-measurements at later stages. Depending on the protein, the assays that are available for you can vary significantly. Kinaze and ion channel are two different families of proteins, and they should be studied differently, so there is no gold-standard experiment that suits them all. But the general recommendation, is to try and get direct binding affinity when you can (since this is what you are measuring in FEP) and then check if for your protein there is actually a correlation between binding affinity and physiological effect.
+
+# Summary
