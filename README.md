@@ -1,6 +1,6 @@
 # Docking Pipeline
 
-This is the overview of steps taken to run a simple docking task with `AutoDock Vina` and `DiffDock` on *CDK2*.
+This is the overview of steps taken to run a simple docking task with `AutoDock Vina` and `DiffDock` on *1H1Q*.
 
 Summary slide is available here. The same summary is at the [end](#summary) of readme.
 
@@ -25,7 +25,7 @@ python docking_pipeline/structure_downloading.py -p 1h1q -o pipeline_output/stru
 ```
 Alongside structure downloading, we perform some basic parsing: we save every protein chain into a separate `.pdb`, and every small molecule entity as a separate `.sdf` file. We extract bond information from `_chem_comp_bond` secion of the downloaded `.cif` file. All the output for this step is saved to [`pipeline_output/structure_downloading`](pipeline_output/structure_downloading) folder. The logging information is in [`structure_loading.log`](pipeline_output/structure_downloading/structure_loading.log) file.
 
-In short, we downloaded CDK2 structure with PDB ID `1H1Q`. There are 4 protein chain. For all future work, we need to select only a single symmetric copy. We will also avoid using Cyclin E in our computational pipeline (to keep things fast). We got the following files:
+In short, we downloaded the structure with PDB ID `1H1Q`. There are 4 protein chain. For all future work, we need to select only a single symmetric copy. We will also avoid using Cyclin E in our computational pipeline (to keep things fast). We got the following files:
 
 ```
 Downloading PDB structure '1h1q'...
@@ -111,7 +111,7 @@ It can be seen, that similar molecules have shifted distributions, while dissimi
 
 We will perform docking with classical pipeline (`autodock-vina`) and with ML pipeline (`Boltz2`).
 
-> I should say here, that I am a bit biased. Currently, we use in-house docking tool for docking, and we never use docking scores for macking any decisions on the projects. Also, ou our internals set, `Boltz2` affinity prediction module demonstrated 0 correlation. However, I think that scores can be more meaningful for CDK2 classical strcuture, since it most probably was used for training and optimization of all the comp-pipelines a lot. Overall, I think that currently the most robust affinity prediction tool is FEP (or something similar).
+> I should say here, that I am a bit biased. Currently, we use in-house docking tool for docking, and we never use docking scores for macking any decisions on the projects. Also, ou our internals set, `Boltz2` affinity prediction module demonstrated 0 correlation. However, I think that scores can be more meaningful for the classical strcuture we used, since it most probably was used for training and optimization of all the comp-pipelines a lot. Overall, I think that currently the most robust affinity prediction tool is FEP (or something similar).
 
 ### 3.1. Classical docking with `AutoDock-Vina`
 
