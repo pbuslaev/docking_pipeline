@@ -1,0 +1,4 @@
+# Conda environment requirements
+python=3.12
+biopython
+rdkit

@@ -1,0 +1,29 @@
+2025-10-25 21:24:05,518 - __main__ - INFO - Starting command-line processing for PDB: 1h1q
+2025-10-25 21:24:05,518 - __main__ - INFO - Starting structure processing pipeline for PDB code: 1h1q
+2025-10-25 21:24:05,519 - __main__ - INFO - Starting download of structure 1h1q
+2025-10-25 21:24:05,519 - __main__ - INFO - Output directory created/verified: pipeline_output/structure_downloading
+2025-10-25 21:24:05,519 - __main__ - INFO - Retrieving structure 1h1q from PDB
+2025-10-25 21:24:06,863 - __main__ - INFO - Successfully downloaded structure to: pipeline_output/structure_downloading/1h1q.cif
+2025-10-25 21:24:06,863 - __main__ - INFO - Starting protein extraction from: pipeline_output/structure_downloading/1h1q.cif
+2025-10-25 21:24:07,144 - __main__ - INFO - Structure parsed successfully
+2025-10-25 21:24:07,144 - __main__ - INFO - Found 4 protein chain(s): ['A', 'B', 'C', 'D']
+2025-10-25 21:24:07,144 - __main__ - WARNING - Multiple protein chains (4) detected in structure.
+2025-10-25 21:24:07,154 - __main__ - INFO - Chain A saved as PDB: pipeline_output/structure_downloading/1h1q_protein_chain_A.pdb
+2025-10-25 21:24:07,163 - __main__ - INFO - Chain B saved as PDB: pipeline_output/structure_downloading/1h1q_protein_chain_B.pdb
+2025-10-25 21:24:07,172 - __main__ - INFO - Chain C saved as PDB: pipeline_output/structure_downloading/1h1q_protein_chain_C.pdb
+2025-10-25 21:24:07,181 - __main__ - INFO - Chain D saved as PDB: pipeline_output/structure_downloading/1h1q_protein_chain_D.pdb
+2025-10-25 21:24:07,181 - __main__ - INFO - Protein extraction completed
+2025-10-25 21:24:07,184 - __main__ - INFO - Starting ligand extraction from: pipeline_output/structure_downloading/1h1q.cif
+2025-10-25 21:24:07,449 - __main__ - INFO - Structure parsed successfully
+2025-10-25 21:24:07,449 - __main__ - INFO - Found 4 ligand residue(s)
+2025-10-25 21:24:07,449 - __main__ - WARNING - Found 4 ligands in the structure. Each will be saved separately.
+2025-10-25 21:24:07,672 - __main__ - INFO - Added bonds from CIF file for ligand TPO
+2025-10-25 21:24:07,673 - __main__ - INFO - Ligand 1/4: TPO saved to pipeline_output/structure_downloading/1h1q_ligand_TPO_1.sdf
+2025-10-25 21:24:07,896 - __main__ - INFO - Added bonds from CIF file for ligand 2A6
+2025-10-25 21:24:07,896 - __main__ - INFO - Ligand 2/4: 2A6 saved to pipeline_output/structure_downloading/1h1q_ligand_2A6_2.sdf
+2025-10-25 21:24:08,114 - __main__ - INFO - Added bonds from CIF file for ligand TPO
+2025-10-25 21:24:08,115 - __main__ - INFO - Ligand 3/4: TPO saved to pipeline_output/structure_downloading/1h1q_ligand_TPO_3.sdf
+2025-10-25 21:24:08,330 - __main__ - INFO - Added bonds from CIF file for ligand 2A6
+2025-10-25 21:24:08,331 - __main__ - INFO - Ligand 4/4: 2A6 saved to pipeline_output/structure_downloading/1h1q_ligand_2A6_4.sdf
+2025-10-25 21:24:08,331 - __main__ - INFO - Ligand extraction completed
+2025-10-25 21:24:08,342 - __main__ - INFO - Structure processing pipeline completed for 1h1q
