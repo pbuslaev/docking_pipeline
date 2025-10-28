@@ -2,7 +2,7 @@
 
 This is the overview of steps taken to run a simple docking task with `AutoDock Vina` and `DiffDock` on *1H1Q*.
 
-Summary slide is available here. The same summary is at the [end](#summary) of readme.
+Summary slide is available [here](Docking_to_1H1Q_with_open_source_tools.pptx). The same summary is at the [end](#summary) of readme.
 
 ## 1. Complex downloading.
 
@@ -295,6 +295,32 @@ In case, the subset of selected molecules is to big (thousands), some intermedia
 
 Best molecules, as defined by FEP, can then be tested in experiment. Ideally, it would be great to get some direct binding affinity measurement with IPC or SPR (NMR and other techniques can also be used). With such assays you measure the binding affinity directly and this can be the most direct way to validate your pipeline. When pipeline is validated, more complicated and costly measurements can be done. This include some biological assyas, like enzyme activity assay or ELISA. Those assay, measure the indirect affects of binding, but often are correlated with binding affinity. At later stages we might be interested in expesive *in vivo* assays to measure dose-response effects of drugs on animals. However, when we start from a library like this, I would assume the project team to be on the early stages of the project, thus direct binding measurements are in priority. Ideally, I would like to get the exact IC50 value, but in some cases, when you are too close to assay boundary, you might only measure percentage of inhibition at a particular concentration, which is harder to translate to IC50.
 
+The other property, that might be of interest is selectivity. In this case binding affinity of the compounds against related proteins should be measured. To be selective, the compound has to bind to target protein, but not to bind to any mutants or related proteins. This can be computed also computationally with `pmx` for example.
+
 To sum up this section, do decide if you want to follow up on the compound you might want to use physics-based methods like MD and FEP to select best compounds. And then, for the best compounds, you might want to measure binding affinity at earlier stages, and accompany those with bioassays and tox-measurements at later stages. Depending on the protein, the assays that are available for you can vary significantly. Kinaze and ion channel are two different families of proteins, and they should be studied differently, so there is no gold-standard experiment that suits them all. But the general recommendation, is to try and get direct binding affinity when you can (since this is what you are measuring in FEP) and then check if for your protein there is actually a correlation between binding affinity and physiological effect.
 
 # Summary
+
+In this small packaged we developed a set of scripts to:
+1. Generate a small library of compounds for computational drug discovery campaign
+2. Downloading and preparing protein ligand complex for docking and cofolding
+3. Analysing the results of docking experiment
+4. Computing ADMET properties for top scoring ligands.
+5. Proposing future steps for drug discovery campaign
+
+Overall, the results are as follows:
+1. We generated a library of 100 molecules including molecules similar to known binder and different from it,
+2. We docked this library with `autodock-vina`. The poses of the known binder were significantly different from the experimental pose, emphasizing the need for tuning the method for the system.
+3. Unfortunately, due to GPU memory limitation, I was not able to use `boltz` on the whole library. From analysis of 6 compounds no correlation was observed between `boltz` and `autodock-vina` predictions. Poses predicted by `boltz` for known binder were closer to experimental pose, which is now surprising, given the fact that the structure was used for training.
+4. For top scoring molecules AMMET properties didn't look great, suggesting that selected molecules should not be progressed forward.
+
+Future steps, in case of a more positive outcome of computational experiment:
+1. Run physics-based methods to further rank proposed compounds. BPMD can be used as a prefiltering step before running a heavier FEP protocol.
+2. Measure binding affinities with direct assays (SPR, ITC).
+3. Measure other properties in bioassays and in animals at later project stages.
+4. Study compound selectivity.
+
+Challenges:
+1. With protocols not validated and tuned on the system of interest it is typically hard to get good performance. Thus, more time has to be spend to prepare the structure for docking experiment, and to also tune protocols (defining constraints, selecting library, etc.)
+2. Computational resources definitely became a chalenge for me, not allowing to run `boltz`.
+3. Initial library generation is also a challenge. A fast attempt here, is not really suitable. Typically, companies might spend years on crafting the compounds for docking, or rely on huge datasets and active learning cycles to get results for those. Both were not the case in the small task.
